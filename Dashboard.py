@@ -17,7 +17,7 @@ This app provides NFL Football stats data!
 st.sidebar.header('Playoff Teams')
 
 # Sidebar - Team selection
-sorted_unique_team = ["cin","oti","buf","kan","gnb","tam","dal","ram"]
+sorted_unique_team = ["cin","oti","buf","kan","gnb","tam","dal","ram","nwe","crd","phi"]
 selected_team = st.sidebar.selectbox("Teams", sorted_unique_team)
 
 # Web scraping of NFL player stats
