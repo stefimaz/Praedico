@@ -35,6 +35,17 @@ The program allows for the user to predict the winner of the superbow using comp
 
 ## Requirements
 
+For windows
+powershell -Command "& $([scriptblock]::Create((New-Object Net.WebClient).DownloadString('https://platform.activestate.com/dl/cli/install.ps1'))) -activate-default Pizza-Team/NFL-Game-Prediction-Win"
+
+For Linux
+powershell -Command "& $([scriptblock]::Create((New-Object Net.WebClient).DownloadString('https://platform.activestate.com/dl/cli/install.ps1'))) -activate-default Pizza-Team/NFL-Game-Prediction-Win"
+
+Nate Silver’s 538 Elo rating 
+The Massey Ratings
+NFL Expert Picks, which provide the odds used in Vegas sports betting 
+
+
 This project leverages python 3.7 Streamlit and scikit-learn.
 
 A [conda](https://docs.conda.io/en/latest/) environment with liabraries listed below and [Jupyter Notebook/Lab](https://jupyter.org/) are required to run the code.
@@ -53,17 +64,14 @@ This project leverages python 3.7, Streamlit, Yahoo Finance, SciPy, ARIMA and St
 Go to your terminal or git bash and run conda activate dev to activate your conda dev environment. 
 You will then install the following librarie(s) and module(s) to run in Python codes created.
     pip install streamlit
-    pip install yahoo-finance
-    pip install scipy
-    pip install pmdarima
-    pip install statsmodels
+    pip install sportsreference
+    pip install sportsipy
 
 To ensure installation was complete, run the following...
     conda list streamlit
-    conda list yahoo-finance
-    conda list scipy
-    conda list pmdarima
-    conda list statsmodels
+    conda list sportsrefernce
+    conda list sportsipy
+
     
 
 ---
