@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
+st.set_page_config(page_title='NFL Football Stats and Predictor', layout='wide')
 st.title('NFL Football Stats and Predictor')
 
 st.markdown("""
@@ -42,17 +43,104 @@ def filedownload(df):
     return href
 
 st.markdown(filedownload(teamstats), unsafe_allow_html=True)
+st.header("Superbowl Playoffs")
+st.header("First round matchups")
 
-#def convert_df(df):
-    
-     # IMPORTANT: Cache the conversion to prevent computation on every rerun
-#    return df.to_csv().encode('utf-8')
+col1, col2 = st.columns(2)
+col1.subheader("teams")
+col1.markdown("AFC Game 1")
 
-#csv = convert_df(teamstats)
+col1.markdown("AFC Game 2")
 
-#st.download_button(
-#     label="Download data as CSV",
-#     data=csv,
-#     file_name='teamstats.csv',
-#     mime='text/csv', )
+col1.markdown("AFC Game 3")
 
+col1.markdown("NFC Game 1")
+
+col1.markdown("NFC Game 2")
+
+col1.markdown("NFC Game 3")
+
+col1.markdown("AFC Bye team: ")
+col1.markdown("NFC Bye team: ")
+container = st.container()
+container.write("Kansa City Chiefs")
+container.image("chiefslogo.png", width=40)
+
+
+button1 = st.button("Run Prediction")
+if button1:
+    st.write("prediction are being calculated...")
+#    result = predict_model()
+
+col2.subheader("Predictions")
+col2.write("AFC Game 1 Winner:")
+
+col2.write("AFC Game 2 Winner:")
+
+col2.write("AFC Game 3 Winner:")
+
+col2.write("NFC Game 1 Winner:")
+
+col2.write("NFC Game 2 Winner:")
+
+col2.write("NFC Game 3 Winner:")
+
+col2.write("AFC Bye team: ")
+col2.write("NFC Bye team: ")
+
+
+
+
+st.header("Divisional round")
+col1, col2 = st.columns(2)
+col1.subheader("teams")
+col1.markdown("AFC Game 1")
+
+col1.markdown("AFC Game 2")
+
+col1.markdown("NFC Game 1")
+
+col1.markdown("NFC Game 2")
+
+button2 = st.button("Run Prediction 2")
+if button2:
+    st.write("prediction are being calculated...")
+
+col2.subheader("Predictions")
+col2.write("AFC Game 1 Winner:")
+
+col2.write("AFC Game 2 Winner:")
+
+col2.write("NFC Game 1 Winner:")
+
+col2.write("NFC Game 2 Winner:")
+
+
+st.header("Conference championships")
+col1, col2 = st.columns(2)
+col1.subheader("teams")
+col1.markdown("AFC Final Game")
+
+col1.markdown("NFC Final Game")
+
+button3 = st.button("Run Prediction 3")
+if button3:
+    st.write("prediction are being calculated...")
+
+col2.subheader("Predictions")
+col2.write("AFC Final Winner:")
+
+col2.write("NFC Final Winner:")
+
+
+st.header("Super Bowl")
+col1, col2 = st.columns(2)
+col1.subheader("teams")
+col1.markdown("Super Bowl Game")
+
+button4 = st.button("Run Prediction 4")
+if button4:
+    st.write("prediction are being calculated...")
+
+col2.subheader("Predictions")
+col2.write("Super Bowl Winner:")
