@@ -18,15 +18,27 @@ This app provides NFL Football stats data!
 #selected_year = st.sidebar.selectbox('Year', list(reversed(range(2015,2021))))
 st.sidebar.header('Playoff Teams')
 
+teams_dict = {'Buffalo Bills' : {'Abbrev':'BUF'}, 'Pittsburgh Steelers' : {'Abbrev':'PIT'}, 'Kansas City Chiefs' : {'Abbrev':'KAN'},
+              'Las Vegas Raiders' : {'Abbrev':'RAI'}, 'Tennessee Titans' : {'Abbrev':'OTI'}, 'Los Angeles Rams' : {'Abbrev':'RAM'},
+             'New England Patriots' : {'Abbrev':'NWE'}, 'Tampa Bay Buccaneers' : {'Abbrev':'TAM'}, 
+             'San Fransisco 49ers' : {'Abbrev':'SFO'}, 'Cincinnati Bengals' : {'Abbrev':'CIN'}, 'Dallas Cowboys' : {'Abbrev':'DAL'},
+             'Philadelphia Eagles' : {'Abbrev':'PHI'}, 'Green Bay Packers' : {'Abbrev':'GNB'}, 'Arizona Cardinals' : {'Abbrev':'CRD'}}
+
+
+
 # Sidebar - Team selection
-sorted_unique_team = ["buf","pit","kan","rai","oti","ram","nwe","tam","sfo","cin","dal","phi","gnb","crd"]
+#sorted_unique_team =["buf","pit","kan","rai","oti","ram","nwe","tam","sfo","cin","dal","phi","gnb","crd"]
+sorted_unique_team = ["Buffalo Bills", "Pittsburgh Steelers", "Kansas City Chiefs","Las Vegas Raiders",
+                      "Tennessee Titans","Los Angeles Rams","New England Patriots","Tampa Bay Buccaneers",
+                      "San Fransisco 49ers","Cincinnati Bengals","Dallas Cowboys","Philadelphia Eagles",
+                      "Green Bay Packers","Arizona Cardinals"]
 selected_team = st.sidebar.selectbox("Teams", sorted_unique_team)
 
 # Web scraping of NFL player stats
 # "https://www.pro-football-reference.com/teams/ram/2021.htm"   # "https://www.pro-football-reference.com/teams/" + str(team) + "/2021.htm"
 @st.cache
 def load_data(team): #year,
-    url = "https://www.pro-football-reference.com/teams/" + str(selected_team) + "/2021.htm"
+    url = "https://www.pro-football-reference.com/teams/" + teams_dict[selected_team]['Abbrev'].lower() + "/2021.htm"
     df = pd.read_html(url, header = 1)
     df = df[1]
     return df
