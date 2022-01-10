@@ -18,11 +18,13 @@ This app provides NFL Football stats data!
 #selected_year = st.sidebar.selectbox('Year', list(reversed(range(2015,2021))))
 st.sidebar.header('Playoff Teams')
 
-teams_dict = {'Buffalo Bills' : {'Abbrev':'BUF'}, 'Pittsburgh Steelers' : {'Abbrev':'PIT'}, 'Kansas City Chiefs' : {'Abbrev':'KAN'},
-              'Las Vegas Raiders' : {'Abbrev':'RAI'}, 'Tennessee Titans' : {'Abbrev':'OTI'}, 'Los Angeles Rams' : {'Abbrev':'RAM'},
-             'New England Patriots' : {'Abbrev':'NWE'}, 'Tampa Bay Buccaneers' : {'Abbrev':'TAM'}, 
-             'San Fransisco 49ers' : {'Abbrev':'SFO'}, 'Cincinnati Bengals' : {'Abbrev':'CIN'}, 'Dallas Cowboys' : {'Abbrev':'DAL'},
-             'Philadelphia Eagles' : {'Abbrev':'PHI'}, 'Green Bay Packers' : {'Abbrev':'GNB'}, 'Arizona Cardinals' : {'Abbrev':'CRD'}}
+teams_dict = {'Buffalo Bills' : {'Abbrev':'BUF', 'Logo' : 'Logos/Bills.png'}, 'Pittsburgh Steelers' : {'Abbrev':'PIT', 'Logo' : 'Logos/Steelers.png'}, 
+              'Kansas City Chiefs' : {'Abbrev':'KAN', 'Logo' : 'Logos/Chiefs.png'}, 'Las Vegas Raiders' : {'Abbrev':'RAI', 'Logo' : 'Logos/Raiders.png'},
+              'Tennessee Titans' : {'Abbrev':'OTI', 'Logo' : 'Logos/Titans.png'}, 'Los Angeles Rams' : {'Abbrev':'RAM', 'Logo' : 'Logos/Rams.png'},
+              'New England Patriots' : {'Abbrev':'NWE', 'Logo' : 'Logos/Patriots.png'}, 'Tampa Bay Buccaneers' : {'Abbrev':'TAM', 'Logo' : 'Logos/Buccaneers.png'}, 
+              'San Fransisco 49ers' : {'Abbrev':'SFO', 'Logo' : 'Logos/49ers.png'}, 'Cincinnati Bengals' : {'Abbrev':'CIN', 'Logo' : 'Logos/Bengals.png'}, 
+              'Dallas Cowboys' : {'Abbrev':'DAL', 'Logo' : 'Logos/Cowboys.png'}, 'Philadelphia Eagles' : {'Abbrev':'PHI', 'Logo' : 'Logos/Eagles.png'}, 
+              'Green Bay Packers' : {'Abbrev':'GNB', 'Logo' : 'Logos/Packers.png'}, 'Arizona Cardinals' : {'Abbrev':'CRD', 'Logo' : 'Logos/Cardinals.png'}}
 
 
 
@@ -45,6 +47,8 @@ def load_data(team): #year,
 teamstats = load_data(selected_team) #selected_year, 
 
 st.subheader('Display Selected Team Schedule & Game Results')
+st.subheader('Current Team Selection: ' + selected_team)
+st.image(teams_dict[selected_team]['Logo'], width = 500)
 st.dataframe(teamstats)
 
 # https://discuss.streamlit.io/t/how-to-download-file-in-streamlit/1806
