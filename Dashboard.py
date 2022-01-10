@@ -18,7 +18,7 @@ This app provides NFL Football stats data!
 st.sidebar.header('Playoff Teams')
 
 # Sidebar - Team selection
-sorted_unique_team = ["Arizona Cardinals", "Buffalo Bills", "Cincinnati Bengals", "Dallas Cowboys", "Greenbay Packers","Kansas City Chiefs", "Las Vegas Raiders", "Los Angeles Charlers", "Los Angeles Rams","New England Patriots", "Philadelphia Eagles", "Pittsburgh Steelers", "San Francisco 49er", "Tampa Bay Bucaneers", "Tennessee Titans"]
+sorted_unique_team = ["buf","pit","kan","rai","opi","ram","nwe","tam","sfo","cin","dal","phi","gnb","crd"]
 selected_team = st.sidebar.selectbox("Teams", sorted_unique_team)
 
 # Web scraping of NFL player stats
