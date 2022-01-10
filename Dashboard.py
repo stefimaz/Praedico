@@ -18,7 +18,7 @@ This app provides NFL Football stats data!
 st.sidebar.header('Playoff Teams')
 
 # Sidebar - Team selection
-sorted_unique_team = ["buf","pit","kan","rai","opi","ram","nwe","tam","sfo","cin","dal","phi","gnb","crd"]
+sorted_unique_team = ["buf","pit","kan","rai","oti","ram","nwe","tam","sfo","cin","dal","phi","gnb","crd"]
 selected_team = st.sidebar.selectbox("Teams", sorted_unique_team)
 
 # Web scraping of NFL player stats
@@ -48,7 +48,8 @@ st.header("First round matchups")
 col1, col2 = st.columns(2)
 col1.subheader("Teams")
 col1.markdown("AFC Game 1")
-
+col1.image("chiefslogo.png", width=40)
+col1.image("Packerslogo.png", width=40)
 col1.markdown("AFC Game 2")
 
 col1.markdown("AFC Game 3")
@@ -64,7 +65,7 @@ col1.markdown("NFC Bye team: ")
 container = st.container()
 container.write("Kansa City Chiefs")
 container.image("chiefslogo.png", width=40)
-https://www.vhv.rs/dpng/d/409-4095070_download-new-england-patriots-png-hd-pat-the.png
+#https://www.vhv.rs/dpng/d/409-4095070_download-new-england-patriots-png-hd-pat-the.png
 
 button1 = st.button("Run Prediction")
 if button1:
