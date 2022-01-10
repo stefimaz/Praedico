@@ -18,12 +18,11 @@ This app provides NFL Football stats data!
 st.sidebar.header('Playoff Teams')
 
 # Sidebar - Team selection
-sorted_unique_team = ["cin","oti","buf","kan","gnb","tam","dal","ram","nwe","crd","phi"]
+sorted_unique_team = ["Arizona Cardinals", "Buffalo Bills", "Cincinnati Bengals", "Dallas Cowboys", "Greenbay Packers","Kansas City Chiefs", "Las Vegas Raiders", "Los Angeles Charlers", "Los Angeles Rams","New England Patriots", "Philadelphia Eagles", "Pittsburgh Steelers", "San Francisco 49er", "Tampa Bay Bucaneers", "Tennessee Titans"]
 selected_team = st.sidebar.selectbox("Teams", sorted_unique_team)
 
 # Web scraping of NFL player stats
-# "https://www.pro-football-reference.com/teams/ram/2021.htm"   
-# "https://www.pro-football-reference.com/teams/" + str(team) + "/2021.htm"
+# "https://www.pro-football-reference.com/teams/ram/2021.htm"   # "https://www.pro-football-reference.com/teams/" + str(team) + "/2021.htm"
 @st.cache
 def load_data(team): #year,
     url = "https://www.pro-football-reference.com/teams/" + str(selected_team) + "/2021.htm"
@@ -47,7 +46,7 @@ st.header("Superbowl Playoffs")
 st.header("First round matchups")
 
 col1, col2 = st.columns(2)
-col1.subheader("teams")
+col1.subheader("Teams")
 col1.markdown("AFC Game 1")
 
 col1.markdown("AFC Game 2")
@@ -65,7 +64,7 @@ col1.markdown("NFC Bye team: ")
 container = st.container()
 container.write("Kansa City Chiefs")
 container.image("chiefslogo.png", width=40)
-
+https://www.vhv.rs/dpng/d/409-4095070_download-new-england-patriots-png-hd-pat-the.png
 
 button1 = st.button("Run Prediction")
 if button1:
@@ -93,7 +92,7 @@ col2.write("NFC Bye team: ")
 
 st.header("Divisional round")
 col1, col2 = st.columns(2)
-col1.subheader("teams")
+col1.subheader("Teams")
 col1.markdown("AFC Game 1")
 
 col1.markdown("AFC Game 2")
@@ -135,7 +134,7 @@ col2.write("NFC Final Winner:")
 
 st.header("Super Bowl")
 col1, col2 = st.columns(2)
-col1.subheader("teams")
+col1.subheader("Teams")
 col1.markdown("Super Bowl Game")
 
 button4 = st.button("Run Prediction 4")
