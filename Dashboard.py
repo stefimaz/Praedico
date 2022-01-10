@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 from PIL import Image
+import pickle
+import sklearn
 
 st.set_page_config(page_title='NFL Football Stats and Predictor', layout='wide')
 st.title('NFL Football Stats and Predictor')
