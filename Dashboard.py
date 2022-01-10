@@ -4,6 +4,7 @@ import base64
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
+from PIL import Image
 
 st.set_page_config(page_title='NFL Football Stats and Predictor', layout='wide')
 st.title('NFL Football Stats and Predictor')
@@ -40,28 +41,54 @@ def filedownload(df):
     b64 = base64.b64encode(csv.encode()).decode()  # strings <-> bytes conversions
     href = f'<a href="data:file/csv;base64,{b64}" download="playerstats.csv">Download CSV File</a>'
     return href
-
 st.markdown(filedownload(teamstats), unsafe_allow_html=True)
+
+#bills = [st.image("chiefslogo.png", width=40)]
+bills = Image.open("chiefslogo.png")
+#rams =
+#bengals =
+#chiefs =
+#cowboys =
+#titans =
+#packers =
+#buccaneers =
+#cardinals =
+#patriots =
+#eagles =
+#fortyniners =
+#steelers =
+#raiders =
+
+# image = Image.open('Packerslogo.png')
+# st.image(image, caption='Sunrise by the mountains')
+
 st.header("Superbowl Playoffs")
 st.header("First round matchups")
 
 col1, col2 = st.columns(2)
 col1.subheader("Teams")
 col1.markdown("AFC Game 1")
-col1.image("chiefslogo.png", width=40)
+col1.image(bills, width=80)
 col1.image("Packerslogo.png", width=40)
 col1.markdown("AFC Game 2")
-
+col1.image("chiefslogo.png", width=40)
+col1.text("Chiefs")
 col1.markdown("AFC Game 3")
-
+col1.image("chiefslogo.png", width=40)
+col1.image("Packerslogo.png", width=40)
 col1.markdown("NFC Game 1")
-
+col1.image("chiefslogo.png", width=40)
+col1.image("Packerslogo.png", width=40)
 col1.markdown("NFC Game 2")
-
+col1.image("chiefslogo.png", width=40)
+col1.image("Packerslogo.png", width=40)
 col1.markdown("NFC Game 3")
-
+col1.image("chiefslogo.png", width=40)
+col1.image("Packerslogo.png", width=40)
 col1.markdown("AFC Bye team: ")
+col1.image("Packerslogo.png", width=40)
 col1.markdown("NFC Bye team: ")
+col1.image("Packerslogo.png", width=40)
 container = st.container()
 container.write("Kansa City Chiefs")
 container.image("chiefslogo.png", width=40)
@@ -74,7 +101,7 @@ if button1:
 
 col2.subheader("Predictions")
 col2.write("AFC Game 1 Winner:")
-
+col2.subheader("this is the winner of game 1")
 col2.write("AFC Game 2 Winner:")
 
 col2.write("AFC Game 3 Winner:")
