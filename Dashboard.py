@@ -62,7 +62,7 @@ def filedownload(df):
 st.markdown(filedownload(teamstats), unsafe_allow_html=True)
 
 #bills = [st.image("chiefslogo.png", width=40)]
-bills = Image.open("chiefslogo.png")
+Buffalo_bills = Image.open("chiefslogo.png")
 #rams =
 #bengals =
 #chiefs =
