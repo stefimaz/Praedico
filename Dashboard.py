@@ -7,9 +7,106 @@ import numpy as np
 from PIL import Image
 import pickle
 import sklearn
+import os
+
+from sklearn.model_selection import train_test_split
+from sklearn.neural_network import MLPRegressor
+from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 
 st.set_page_config(page_title='NFL Football Stats and Predictor', layout='wide')
 st.title('NFL Football Stats and Predictor')
+
+model = pickle.load(open('MLP_model.sav','rb'))
+path = ("./resources/Team_df.csv")
+com_data = pd.read_csv(path)
+
+# get index of every team's data
+team_index = com_data['Team']
+
+# Remove Opponent, Score, Result
+mlp_model_data = com_data[['Team', 'Opp', 'TmScore', 'O_1stD', 'O_Tot_yd', 'O_P_Yd', 'O_R_Yd', 'O_TO',
+                         'D_1stD', 'D_Tot_Yd', 'D_P_Yd', 'D_R_Yd', 'D_TO', 'Home']]
+#  , 'ADA_Pred_Mean', 'LOG_Prediction'
+
+# change to season stats
+season_stats = ['O_1stD', 'O_Tot_yd', 'O_P_Yd', 'O_R_Yd', 'O_TO',
+                         'D_1stD', 'D_Tot_Yd', 'D_P_Yd', 'D_R_Yd', 'D_TO']
+
+mlp_model_data[season_stats] = mlp_model_data[season_stats] * 16
+
+# standardise the data
+from sklearn import preprocessing
+
+sd_data = ['O_1stD', 'O_Tot_yd', 'O_P_Yd', 'O_R_Yd', 'O_TO',
+                         'D_1stD', 'D_Tot_Yd', 'D_P_Yd', 'D_R_Yd', 'D_TO']
+#  , 'ADA_Pred_Mean', 'LOG_Prediction'
+
+mlp_model_data[sd_data] = preprocessing.scale(mlp_model_data[sd_data])
+
+#get indexs of every teams
+team_index = com_data['Team']
+
+mlp_model_data = pd.get_dummies(mlp_model_data)
+
+pd.options.display.max_rows = None
+
+pd.options.display.max_columns = None
+
+# Create playoff test dataset from season averages
+
+def Score_Predictor(home_team, away_team):
+    team1 = home_team
+    team2 = away_team
+    
+    team1_data = mlp_model_data[com_data['Team'] == team1].drop('TmScore', axis=1).reset_index(drop=True)
+    team2_data = mlp_model_data[com_data['Team'] == team2].drop('TmScore', axis=1).reset_index(drop=True)
+    
+    week_slice = slice(0,16)
+    
+    #1 Remove if no team names
+    team1_test = pd.DataFrame(team1_data[week_slice].mean(axis=0)).T #select week to use as average
+    team1_test
+    opp_columns = team1_test.filter(like='Opp').columns
+    
+    team1_test[opp_columns] = 0
+    team1_test['Opp_' + team2] = 1
+    team1_test['Home'] = 1
+    
+    #2
+    team2_test = pd.DataFrame(team2_data[week_slice].mean(axis=0)).T #select week to use as average
+    opp_columns = team2_test.filter(like='Opp').columns
+    
+    team2_test[opp_columns] = 0
+    team2_test['Opp_' + team1] = 1
+    team2_test['Home'] = 1 # change to remove home field advantage
+    
+    # head to head matchup
+    team1_test[['D_1stD','D_Tot_Yd','D_P_Yd','D_R_Yd','D_TO']] = team2_test[['O_1stD','O_Tot_yd','O_P_Yd','O_R_Yd','O_TO']]
+    team2_test[['D_1stD','D_Tot_Yd','D_P_Yd','D_R_Yd','D_TO']] = team1_test[['O_1stD','O_Tot_yd','O_P_Yd','O_R_Yd','O_TO']]
+    
+    X_Playoff_test = pd.concat([team1_test, team2_test])
+    X_Playoff_test.fillna(0, inplace = True) # added to address the NANs that was causing the error
+    
+    scores = model.predict(X_Playoff_test)
+    print(team1, "will score", round(scores[0], 1))
+    print(team2, "will score", round(scores[1], 1))
+    
+    if scores[0] > scores[1]:
+        winner = team1
+    else:
+        winner = team2
+        
+    print(winner, "are the WINNERS!!!")
+    
+    return scores, winner
+
+
+scores, winner = Score_Predictor('Philadelphia Eagles', 'Tampa Bay Buccaneers')
+
+
+
+
+
 
 st.markdown("""
 This app provides NFL Football stats data!
@@ -19,6 +116,7 @@ This app provides NFL Football stats data!
 #st.sidebar.header('Playoff Teams')
 #selected_year = st.sidebar.selectbox('Year', list(reversed(range(2015,2021))))
 st.sidebar.header('Playoff Teams')
+
 
 teams_dict = {'Buffalo Bills' : {'Abbrev':'BUF', 'Logo' : 'Logos/Bills.png'}, 'Pittsburgh Steelers' : {'Abbrev':'PIT', 'Logo' : 'Logos/Steelers.png'}, 
               'Kansas City Chiefs' : {'Abbrev':'KAN', 'Logo' : 'Logos/Chiefs.png'}, 'Las Vegas Raiders' : {'Abbrev':'RAI', 'Logo' : 'Logos/Raiders.png'},
@@ -62,20 +160,20 @@ def filedownload(df):
 st.markdown(filedownload(teamstats), unsafe_allow_html=True)
 
 #bills = [st.image("chiefslogo.png", width=40)]
-Buffalo_bills = Image.open("chiefslogo.png")
-#rams =
-#bengals =
-#chiefs =
-#cowboys =
-#titans =
-#packers =
-#buccaneers =
-#cardinals =
-#patriots =
-#eagles =
-#fortyniners =
-#steelers =
-#raiders =
+Buffalo_bills = Image.open("Logos/Bills.png")
+Pittsburgh_Steelers = Image.open("Logos/Steelers.png")
+Kansas_City_Chiefs = Image.open("Logos/Chiefs.png")
+Las_Vegas_Raiders = Image.open("Logos/Raiders.png")
+Tennessee_Titans = Image.open("Logos/Titans.png")
+Los_Angeles_Rams = Image.open("Logos/Rams.png")
+New_England_Patriots = Image.open("Logos/Patriots.png")
+Tampa_Bay_Buccaneers = Image.open("Logos/Buccaneers.png")
+San_Fransisco_49ers = Image.open("Logos/49ers.png")
+Cincinnati_Bengals = Image.open("Logos/Bengals.png")
+Dallas_Cowboys = Image.open("Logos/Cowboys.png")
+Philadelphia_Eagles = Image.open("Logos/Eagles.png")
+Green_Bay_Packers = Image.open("Logos/Packers.png")
+Arizona_Cardinals = Image.open("Logos/Cardinals.png")
 
 # image = Image.open('Packerslogo.png')
 # st.image(image, caption='Sunrise by the mountains')
@@ -86,34 +184,35 @@ st.header("First round matchups")
 col1, col2 = st.columns(2)
 col1.subheader("Teams")
 col1.markdown("AFC Game 1")
-col1.image("Logos/Chiefs.png", width = 200)
-col1.image("Logos/Steelers.png", width = 200)
+col1.image(Kansas_City_Chiefs, width = 200)
+col1.image(Pittsburgh_Steelers, width = 200)
 col1.markdown("AFC Game 2")
-col1.image("Logos/Bills.png", width = 200)
-col1.image("Logos/Patriots.png", width = 200)
+col1.image(Buffalo_bills, width = 200)
+col1.image(New_England_Patriots, width = 200)
 col1.markdown("AFC Game 3")
-col1.image("Logos/Bengals.png", width = 200)
-col1.image("Logos/Raiders.png", width = 200)
+col1.image(Cincinnati_Bengals, width = 200)
+col1.image(Las_Vegas_Raiders, width = 200)
 col1.markdown("NFC Game 1")
-col1.image("Logos/Buccaneers.png", width = 200)
-col1.image("Logos/Eagles.png", width = 200)
+col1.image(Tampa_Bay_Buccaneers, width = 200)
+col1.image(Philadelphia_Eagles, width = 200)
 col1.markdown("NFC Game 2")
-col1.image("Logos/Cowboys.png", width = 200)
-col1.image("Logos/49ers.png", width = 200)
+col1.image(Dallas_Cowboys, width = 200)
+col1.image(San_Fransisco_49ers, width = 200)
 col1.markdown("NFC Game 3")
-col1.image("Logos/Rams.png", width = 200)
-col1.image("Logos/Cardinals.png", width = 200)
+col1.image(Los_Angeles_Rams, width = 200)
+col1.image(Arizona_Cardinals, width = 200)
 col1.markdown("AFC Bye team: ")
-col1.image("Logos/Titans.png", width = 200)
+col1.image(Tennessee_Titans, width = 200)
 col1.markdown("NFC Bye team: ")
-col1.image("Logos/Packers.png", width = 200)
+col1.image(Green_Bay_Packers, width = 200)
 container = st.container()
 
 #https://www.vhv.rs/dpng/d/409-4095070_download-new-england-patriots-png-hd-pat-the.png
-
+result = ""
 button1 = st.button("Run Prediction")
 if button1:
     st.write("prediction are being calculated...")
+    result = scores, winner = Score_Predictor(Kansas_City_Chiefs, Pittsburgh_Steelers)
 #    result = predict_model()
 
 col2.subheader("Predictions")
