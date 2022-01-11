@@ -108,8 +108,7 @@ col1.image("Logos/Titans.png", width = 200)
 col1.markdown("NFC Bye team: ")
 col1.image("Logos/Packers.png", width = 200)
 container = st.container()
-container.write("Kansa City Chiefs")
-container.image("chiefslogo.png", width=40)
+
 #https://www.vhv.rs/dpng/d/409-4095070_download-new-england-patriots-png-hd-pat-the.png
 
 button1 = st.button("Run Prediction")
