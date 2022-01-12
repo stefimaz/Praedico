@@ -115,13 +115,13 @@ This app provides NFL Football stats data!
 st.sidebar.header('Playoff Teams')
 
 
-teams_dict = {'Buffalo Bills' : {'Abbrev':'BUF', 'Logo' : 'Logos/Bills.png'}, 'Pittsburgh Steelers' : {'Abbrev':'PIT', 'Logo' : 'Logos/Steelers.png'}, 
-              'Kansas City Chiefs' : {'Abbrev':'KAN', 'Logo' : 'Logos/Chiefs.png'}, 'Las Vegas Raiders' : {'Abbrev':'RAI', 'Logo' : 'Logos/Raiders.png'},
-              'Tennessee Titans' : {'Abbrev':'OTI', 'Logo' : 'Logos/Titans.png'}, 'Los Angeles Rams' : {'Abbrev':'RAM', 'Logo' : 'Logos/Rams.png'},
-              'New England Patriots' : {'Abbrev':'NWE', 'Logo' : 'Logos/Patriots.png'}, 'Tampa Bay Buccaneers' : {'Abbrev':'TAM', 'Logo' : 'Logos/Buccaneers.png'}, 
-              'San Fransisco 49ers' : {'Abbrev':'SFO', 'Logo' : 'Logos/49ers.png'}, 'Cincinnati Bengals' : {'Abbrev':'CIN', 'Logo' : 'Logos/Bengals.png'}, 
-              'Dallas Cowboys' : {'Abbrev':'DAL', 'Logo' : 'Logos/Cowboys.png'}, 'Philadelphia Eagles' : {'Abbrev':'PHI', 'Logo' : 'Logos/Eagles.png'}, 
-              'Green Bay Packers' : {'Abbrev':'GNB', 'Logo' : 'Logos/Packers.png'}, 'Arizona Cardinals' : {'Abbrev':'CRD', 'Logo' : 'Logos/Cardinals.png'}}
+teams_dict = {'Buffalo Bills' : {'Abbrev':'BUF', 'Logo' : 'Logos/Bills.png', 'Seed' : 3}, 'Pittsburgh Steelers' : {'Abbrev':'PIT', 'Logo' : 'Logos/Steelers.png', 'Seed' : 7}, 
+              'Kansas City Chiefs' : {'Abbrev':'KAN', 'Logo' : 'Logos/Chiefs.png', 'Seed' : 2}, 'Las Vegas Raiders' : {'Abbrev':'RAI', 'Logo' : 'Logos/Raiders.png', 'Seed' : 5},
+              'Tennessee Titans' : {'Abbrev':'OTI', 'Logo' : 'Logos/Titans.png', 'Seed' : 1}, 'Los Angeles Rams' : {'Abbrev':'RAM', 'Logo' : 'Logos/Rams.png', 'Seed' : 4},
+              'New England Patriots' : {'Abbrev':'NWE', 'Logo' : 'Logos/Patriots.png', 'Seed' : 6}, 'Tampa Bay Buccaneers' : {'Abbrev':'TAM', 'Logo' : 'Logos/Buccaneers.png', 'Seed' : 2}, 
+              'San Francisco 49ers' : {'Abbrev':'SFO', 'Logo' : 'Logos/49ers.png', 'Seed' : 6}, 'Cincinnati Bengals' : {'Abbrev':'CIN', 'Logo' : 'Logos/Bengals.png', 'Seed' : 4}, 
+              'Dallas Cowboys' : {'Abbrev':'DAL', 'Logo' : 'Logos/Cowboys.png', 'Seed' : 3}, 'Philadelphia Eagles' : {'Abbrev':'PHI', 'Logo' : 'Logos/Eagles.png', 'Seed' : 7}, 
+              'Green Bay Packers' : {'Abbrev':'GNB', 'Logo' : 'Logos/Packers.png', 'Seed' : 1}, 'Arizona Cardinals' : {'Abbrev':'CRD', 'Logo' : 'Logos/Cardinals.png', 'Seed' : 5}}
 
 
 
@@ -129,7 +129,7 @@ teams_dict = {'Buffalo Bills' : {'Abbrev':'BUF', 'Logo' : 'Logos/Bills.png'}, 'P
 #sorted_unique_team =["buf","pit","kan","rai","oti","ram","nwe","tam","sfo","cin","dal","phi","gnb","crd"]
 sorted_unique_team = ["Buffalo Bills", "Pittsburgh Steelers", "Kansas City Chiefs","Las Vegas Raiders",
                       "Tennessee Titans","Los Angeles Rams","New England Patriots","Tampa Bay Buccaneers",
-                      "San Fransisco 49ers","Cincinnati Bengals","Dallas Cowboys","Philadelphia Eagles",
+                      "San Francisco 49ers","Cincinnati Bengals","Dallas Cowboys","Philadelphia Eagles",
                       "Green Bay Packers","Arizona Cardinals"]
 selected_team = st.sidebar.selectbox("Teams", sorted_unique_team)
 
@@ -156,6 +156,7 @@ def filedownload(df):
     return href
 st.markdown(filedownload(teamstats), unsafe_allow_html=True)
 
+
 #bills = [st.image("chiefslogo.png", width=40)]
 Buffalo_Bills = Image.open("Logos/Bills.png")
 Pittsburgh_Steelers = Image.open("Logos/Steelers.png")
@@ -172,6 +173,7 @@ Philadelphia_Eagles = Image.open("Logos/Eagles.png")
 Green_Bay_Packers = Image.open("Logos/Packers.png")
 Arizona_Cardinals = Image.open("Logos/Cardinals.png")
 
+
 # image = Image.open('Packerslogo.png')
 # st.image(image, caption='Sunrise by the mountains')
 
@@ -181,27 +183,27 @@ st.header("First round matchups")
 col1, col2 = st.columns(2)
 col1.subheader("Teams")
 col1.markdown("AFC Game 1")
-col1.image(Kansas_City_Chiefs, width = 200)
-col1.image(Pittsburgh_Steelers, width = 200)
+col1.image(teams_dict['Kansas City Chiefs']['Logo'], width = 200)
+col1.image(teams_dict['Pittsburgh Steelers']['Logo'], width = 200)
 col1.markdown("AFC Game 2")
-col1.image(Buffalo_Bills, width = 200)
-col1.image(New_England_Patriots, width = 200)
+col1.image(teams_dict['Buffalo Bills']['Logo'], width = 200)
+col1.image(teams_dict['New England Patriots']['Logo'], width = 200)
 col1.markdown("AFC Game 3")
-col1.image(Cincinnati_Bengals, width = 200)
-col1.image(Las_Vegas_Raiders, width = 200)
+col1.image(teams_dict['Cincinnati Bengals']['Logo'], width = 200)
+col1.image(teams_dict['Las Vegas Raiders']['Logo'], width = 200)
 col1.markdown("NFC Game 1")
-col1.image(Tampa_Bay_Buccaneers, width = 200)
-col1.image(Philadelphia_Eagles, width = 200)
+col1.image(teams_dict['Tampa Bay Buccaneers']['Logo'], width = 200)
+col1.image(teams_dict['Philadelphia Eagles']['Logo'], width = 200)
 col1.markdown("NFC Game 2")
-col1.image(Dallas_Cowboys, width = 200)
-col1.image(San_Francisco_49ers, width = 200)
+col1.image(teams_dict['Dallas Cowboys']['Logo'], width = 200)
+col1.image(teams_dict['San Francisco 49ers']['Logo'], width = 200)
 col1.markdown("NFC Game 3")
-col1.image(Los_Angeles_Rams, width = 200)
-col1.image(Arizona_Cardinals, width = 200)
+col1.image(teams_dict['Los Angeles Rams']['Logo'], width = 200)
+col1.image(teams_dict['Arizona Cardinals']['Logo'], width = 200)
 col1.markdown("AFC Bye team: ")
-col1.image(Tennessee_Titans, width = 200)
+col1.image(teams_dict['Tennessee Titans']['Logo'], width = 200)
 col1.markdown("NFC Bye team: ")
-col1.image(Green_Bay_Packers, width = 200)
+col1.image(teams_dict['Green Bay Packers']['Logo'], width = 200)
 container = st.container()
 
 #https://www.vhv.rs/dpng/d/409-4095070_download-new-england-patriots-png-hd-pat-the.png
@@ -218,28 +220,34 @@ if button1:
     
     col2.subheader("Predictions")
     col2.write("AFC Game 1 Winner:")
-    col2.subheader(f"this is the winner of game 1:{winner1}")
+    #col2.subheader(f"this is the winner of game 1:{winner1}")
+    col2.image(teams_dict[winner1]['Logo'])
 
     col2.write("AFC Game 2 Winner:")
-    col2.subheader(f"this is the winner of game 2:{winner2}")
+    col2.image(teams_dict[winner2]['Logo'])
+    #col2.subheader(f"this is the winner of game 2:{winner2}")
 
     col2.write("AFC Game 3 Winner:")
-    col2.subheader(f"this is the winner of game 3:{winner3}")
+    col2.image(teams_dict[winner3]['Logo'])
+    #col2.subheader(f"this is the winner of game 3:{winner3}")
 
     col2.write("NFC Game 1 Winner:")
-    col2.subheader(f"this is the winner of game 1:{winner4}")
+    col2.image(teams_dict[winner4]['Logo'])
+    #col2.subheader(f"this is the winner of game 1:{winner4}")
 
     col2.write("NFC Game 2 Winner:")
-    col2.subheader(f"this is the winner of game 2:{winner5}")
+    col2.image(teams_dict[winner5]['Logo'])
+    #col2.subheader(f"this is the winner of game 2:{winner5}")
 
     col2.write("NFC Game 3 Winner:")
-    col2.subheader(f"this is the winner of game 3:{winner6}")
+    col2.image(teams_dict[winner6]['Logo'])
+    #col2.subheader(f"this is the winner of game 3:{winner6}")
 
     col2.write("AFC Bye team: ")
-    col1.image(Tennessee_Titans, width = 200)
+    col2.image(teams_dict['Tennessee Titans']['Logo'])
 
     col2.write("NFC Bye team: ")
-    col1.image(Green_Bay_Packers, width = 200)
+    col2.image(teams_dict['Green Bay Packers']['Logo'])
 
 st.header("Divisional round")
 col1, col2 = st.columns(2)
