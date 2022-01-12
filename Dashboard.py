@@ -25,9 +25,7 @@ team_index = com_data['Team']
 
 # Remove Opponent, Score, Result
 mlp_model_data = com_data[['Team', 'Opp', 'TmScore', 'O_1stD', 'O_Tot_yd', 'O_P_Yd', 'O_R_Yd', 'O_TO',
-                         'D_1stD', 'D_Tot_Yd', 'D_P_Yd', 'D_R_Yd', 'D_TO', 'Home']]
-#  , 'ADA_Pred_Mean', 'LOG_Prediction'
-
+                         'D_1stD', 'D_Tot_Yd', 'D_P_Yd', 'D_R_Yd', 'D_TO', 'Home','Prediction_LR','Prediction_ADA']]
 # change to season stats
 season_stats = ['O_1stD', 'O_Tot_yd', 'O_P_Yd', 'O_R_Yd', 'O_TO',
                          'D_1stD', 'D_Tot_Yd', 'D_P_Yd', 'D_R_Yd', 'D_TO']
@@ -38,8 +36,7 @@ mlp_model_data[season_stats] = mlp_model_data[season_stats] * 16
 from sklearn import preprocessing
 
 sd_data = ['O_1stD', 'O_Tot_yd', 'O_P_Yd', 'O_R_Yd', 'O_TO',
-                         'D_1stD', 'D_Tot_Yd', 'D_P_Yd', 'D_R_Yd', 'D_TO']
-#  , 'ADA_Pred_Mean', 'LOG_Prediction'
+                         'D_1stD', 'D_Tot_Yd', 'D_P_Yd', 'D_R_Yd', 'D_TO','Prediction_LR','Prediction_ADA']
 
 mlp_model_data[sd_data] = preprocessing.scale(mlp_model_data[sd_data])
 
@@ -160,7 +157,7 @@ def filedownload(df):
 st.markdown(filedownload(teamstats), unsafe_allow_html=True)
 
 #bills = [st.image("chiefslogo.png", width=40)]
-Buffalo_bills = Image.open("Logos/Bills.png")
+Buffalo_Bills = Image.open("Logos/Bills.png")
 Pittsburgh_Steelers = Image.open("Logos/Steelers.png")
 Kansas_City_Chiefs = Image.open("Logos/Chiefs.png")
 Las_Vegas_Raiders = Image.open("Logos/Raiders.png")
@@ -168,7 +165,7 @@ Tennessee_Titans = Image.open("Logos/Titans.png")
 Los_Angeles_Rams = Image.open("Logos/Rams.png")
 New_England_Patriots = Image.open("Logos/Patriots.png")
 Tampa_Bay_Buccaneers = Image.open("Logos/Buccaneers.png")
-San_Fransisco_49ers = Image.open("Logos/49ers.png")
+San_Francisco_49ers = Image.open("Logos/49ers.png")
 Cincinnati_Bengals = Image.open("Logos/Bengals.png")
 Dallas_Cowboys = Image.open("Logos/Cowboys.png")
 Philadelphia_Eagles = Image.open("Logos/Eagles.png")
@@ -187,7 +184,7 @@ col1.markdown("AFC Game 1")
 col1.image(Kansas_City_Chiefs, width = 200)
 col1.image(Pittsburgh_Steelers, width = 200)
 col1.markdown("AFC Game 2")
-col1.image(Buffalo_bills, width = 200)
+col1.image(Buffalo_Bills, width = 200)
 col1.image(New_England_Patriots, width = 200)
 col1.markdown("AFC Game 3")
 col1.image(Cincinnati_Bengals, width = 200)
@@ -197,7 +194,7 @@ col1.image(Tampa_Bay_Buccaneers, width = 200)
 col1.image(Philadelphia_Eagles, width = 200)
 col1.markdown("NFC Game 2")
 col1.image(Dallas_Cowboys, width = 200)
-col1.image(San_Fransisco_49ers, width = 200)
+col1.image(San_Francisco_49ers, width = 200)
 col1.markdown("NFC Game 3")
 col1.image(Los_Angeles_Rams, width = 200)
 col1.image(Arizona_Cardinals, width = 200)
@@ -208,56 +205,82 @@ col1.image(Green_Bay_Packers, width = 200)
 container = st.container()
 
 #https://www.vhv.rs/dpng/d/409-4095070_download-new-england-patriots-png-hd-pat-the.png
-result = ""
+winner = ""
 button1 = st.button("Run Prediction")
 if button1:
-    st.write("prediction are being calculated...")
-    result = scores, winner = Score_Predictor(Kansas_City_Chiefs, Pittsburgh_Steelers)
-#    result = predict_model()
+    st.write("prediction are being calculated...")    
+    scores1, winner1 = Score_Predictor('Kansas City Chiefs', 'Pittsburgh Steelers')
+    scores2, winner2 = Score_Predictor('Buffalo Bills', 'New England Patriots')
+    scores3, winner3 = Score_Predictor('Cincinnati Bengals', 'Las Vegas Raiders')
+    scores4, winner4 = Score_Predictor('Tampa Bay Buccaneers', 'Philadelphia Eagles')
+    scores5, winner5 = Score_Predictor('Dallas Cowboys', 'San Francisco 49ers')
+    scores6, winner6 = Score_Predictor('Los Angeles Rams', 'Arizona Cardinals')
+    
+    col2.subheader("Predictions")
+    col2.write("AFC Game 1 Winner:")
+    col2.subheader(f"this is the winner of game 1:{winner1}")
 
-col2.subheader("Predictions")
-col2.write("AFC Game 1 Winner:")
-col2.subheader("this is the winner of game 1")
+    col2.write("AFC Game 2 Winner:")
+    col2.subheader(f"this is the winner of game 2:{winner2}")
 
-col2.write("AFC Game 2 Winner:")
+    col2.write("AFC Game 3 Winner:")
+    col2.subheader(f"this is the winner of game 3:{winner3}")
 
-col2.write("AFC Game 3 Winner:")
+    col2.write("NFC Game 1 Winner:")
+    col2.subheader(f"this is the winner of game 1:{winner4}")
 
-col2.write("NFC Game 1 Winner:")
+    col2.write("NFC Game 2 Winner:")
+    col2.subheader(f"this is the winner of game 2:{winner5}")
 
-col2.write("NFC Game 2 Winner:")
+    col2.write("NFC Game 3 Winner:")
+    col2.subheader(f"this is the winner of game 3:{winner6}")
 
-col2.write("NFC Game 3 Winner:")
+    col2.write("AFC Bye team: ")
+    col1.image(Tennessee_Titans, width = 200)
 
-col2.write("AFC Bye team: ")
-col2.write("NFC Bye team: ")
-
-
-
+    col2.write("NFC Bye team: ")
+    col1.image(Green_Bay_Packers, width = 200)
 
 st.header("Divisional round")
 col1, col2 = st.columns(2)
 col1.subheader("Teams")
 col1.markdown("AFC Game 1")
+col1.image(winner1, width = 200)
+col1.image(winner2, width = 200)
 
 col1.markdown("AFC Game 2")
+col1.image(winner3, width = 200)
+col1.image(winner4, width = 200)
 
 col1.markdown("NFC Game 1")
+col1.image(winner5, width = 200)
+col1.image(Tennessee_Titans, width = 200)
 
 col1.markdown("NFC Game 2")
+col1.image(winner1, width = 200)
+col1.image(Green_Bay_Packers, width = 200)
 
 button2 = st.button("Run Prediction 2")
 if button2:
     st.write("prediction are being calculated...")
+    scores7, winner7 = Score_Predictor(winner1,winner2)
+    scores8, winner8 = Score_Predictor(winner3,winner4)
+    scores9, winner9 = Score_Predictor(winner5,winner6)
+    scores10, winner10 = Score_Predictor('Green Bay Packers','Tennessee Titans')
+   
 
-col2.subheader("Predictions")
-col2.write("AFC Game 1 Winner:")
+    col2.subheader("Predictions")
+    col2.write("AFC Game 1 Winner:")
+    col2.subheader(f"this is the winner of game 1:{winner7}")
 
-col2.write("AFC Game 2 Winner:")
+    col2.write("AFC Game 2 Winner:")
+    col2.subheader(f"this is the winner of game 2:{winner8}")
 
-col2.write("NFC Game 1 Winner:")
+    col2.write("NFC Game 1 Winner:")
+    col2.subheader(f"this is the winner of game 1:{winner9}")
 
-col2.write("NFC Game 2 Winner:")
+    col2.write("NFC Game 2 Winner:")
+    col2.subheader(f"this is the winner of game 2:{winner10}")
 
 
 st.header("Conference championships")
@@ -271,10 +294,10 @@ button3 = st.button("Run Prediction 3")
 if button3:
     st.write("prediction are being calculated...")
 
-col2.subheader("Predictions")
-col2.write("AFC Final Winner:")
+    col2.subheader("Predictions")
+    col2.write("AFC Final Winner:")
 
-col2.write("NFC Final Winner:")
+    col2.write("NFC Final Winner:")
 
 
 st.header("Super Bowl")
@@ -286,5 +309,5 @@ button4 = st.button("Run Prediction 4")
 if button4:
     st.write("prediction are being calculated...")
 
-col2.subheader("Predictions")
-col2.write("Super Bowl Winner:")
+    col2.subheader("Predictions")
+    col2.write("Super Bowl Winner:")
