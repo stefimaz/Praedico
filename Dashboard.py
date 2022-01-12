@@ -218,6 +218,7 @@ if button1:
 col2.subheader("Predictions")
 col2.write("AFC Game 1 Winner:")
 col2.subheader("this is the winner of game 1")
+
 col2.write("AFC Game 2 Winner:")
 
 col2.write("AFC Game 3 Winner:")
