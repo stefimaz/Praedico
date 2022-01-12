@@ -14,6 +14,7 @@ from sklearn.neural_network import MLPRegressor
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 
 st.set_page_config(page_title='NFL Football Stats and Predictor', layout='wide')
+st.image('./Logos/SBanner.jpeg')
 st.title('NFL Football Stats and Predictor')
 
 model = pickle.load(open('MLP_model.sav','rb'))
@@ -85,15 +86,15 @@ def Score_Predictor(home_team, away_team):
     X_Playoff_test.fillna(0, inplace = True) # added to address the NANs that was causing the error
     
     scores = model.predict(X_Playoff_test)
-    print(team1, "will score", round(scores[0], 1))
-    print(team2, "will score", round(scores[1], 1))
+    #print(team1, "will score", round(scores[0], 1))
+    #print(team2, "will score", round(scores[1], 1))
     
     if scores[0] > scores[1]:
         winner = team1
     else:
         winner = team2
         
-    print(winner, "are the WINNERS!!!")
+    #print(winner, "are the WINNERS!!!")
     
     return scores, winner
 
@@ -203,7 +204,14 @@ col1.markdown("NFC Bye team: ")
 col1.image(teams_dict['Green Bay Packers']['Logo'], width = 200)
 container = st.container()
 
-#https://www.vhv.rs/dpng/d/409-4095070_download-new-england-patriots-png-hd-pat-the.png
+afc_lowest = ''
+afc_team1 = ''
+afc_team2 = ''
+
+nfc_lowest = ''
+nfc_team1 = ''
+nfc_team2 = ''
+
 winner = ""
 button1 = st.button("Run Prediction")
 if button1:
@@ -247,11 +255,8 @@ if button1:
     col2.image(teams_dict['Green Bay Packers']['Logo'])
     
     # Original Code for round 2 added to the first prediction button
+ ######   
     
-    afc_lowest = ''
-    afc_team1 = ''
-    afc_team2 = ''
-
     if (teams_dict[afc_winner1]['Seed'] > teams_dict[afc_winner2]['Seed']) and (teams_dict[afc_winner1]['Seed'] > teams_dict[afc_winner3]['Seed']):
         afc_lowest = afc_winner1
         afc_team1 = afc_winner2
@@ -265,10 +270,7 @@ if button1:
         afc_team1 = afc_winner1
         afc_team2 = afc_winner2
     
-    
-    nfc_lowest = ''
-    nfc_team1 = ''
-    nfc_team2 = ''
+ ##### 
 
     if (teams_dict[nfc_winner1]['Seed'] > teams_dict[nfc_winner2]['Seed']) and (teams_dict[nfc_winner1]['Seed'] > teams_dict[nfc_winner3]['Seed']):
         nfc_lowest = nfc_winner1
@@ -360,8 +362,7 @@ if button1:
             button4 = st.button("Run Prediction 4")
             if button4:
                 st.write("prediction are being calculated...")
-                col2.write("Super Bowl Winner:")
                 scores11, winner13 = Score_Predictor(winner11, winner12)
                 
-                
+                col2.write("Super Bowl Winner:")
                 col2.image(team_dict[winner13]['Logo'])
