@@ -141,6 +141,7 @@ def load_data(team): #year,
     return df
 teamstats = load_data(selected_team) #selected_year, 
 
+
 st.subheader('Display Selected Team Schedule & Game Results')
 st.subheader('Current Team Selection: ' + selected_team)
 st.image(teams_dict[selected_team]['Logo'], width = 500)
@@ -208,7 +209,7 @@ container = st.container()
 winner = ""
 button1 = st.button("Run Prediction")
 if button1:
-    st.write("prediction are being calculated...")    
+    #st.write("prediction are being calculated...")    
     scores1, afc_winner1 = Score_Predictor('Kansas City Chiefs', 'Pittsburgh Steelers')
     scores2, afc_winner2 = Score_Predictor('Buffalo Bills', 'New England Patriots')
     scores3, afc_winner3 = Score_Predictor('Cincinnati Bengals', 'Las Vegas Raiders')
@@ -306,7 +307,7 @@ if button1:
 
     #button2 = st.button("Run Prediction 2")
     #if button2:
-    st.write("prediction coming up...")
+    #st.write("prediction coming up...")
     scores7, winner7 = Score_Predictor('Tennessee Titans', afc_lowest)
     scores8, winner8 = Score_Predictor(afc_team1, afc_team2)
     scores9, winner9 = Score_Predictor('Green Bay Packers', nfc_lowest)
@@ -340,7 +341,7 @@ if button1:
 
         #button3 = st.button("Run Prediction 3")
         #if button3:
-    st.write("prediction are being calculated...")
+    #st.write("prediction are being calculated...")
     scores11, winner11 = Score_Predictor(winner7, winner8)
     scores12, winner12 = Score_Predictor(winner9, winner10)
 
@@ -360,7 +361,7 @@ if button1:
 
           #  button4 = st.button("Run Prediction 4")
             #if button4:
-    st.write("prediction are being calculated...")
+    #st.write("prediction are being calculated...")
     col2.write("Super Bowl Winner:")
     scores11, winner13 = Score_Predictor(winner11, winner12)
                 
