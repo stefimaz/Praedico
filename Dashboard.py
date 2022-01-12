@@ -62,7 +62,7 @@ def Score_Predictor(home_team, away_team):
     
     #1 Remove if no team names
     team1_test = pd.DataFrame(team1_data[week_slice].mean(axis=0)).T #select week to use as average
-    team1_test
+    #team1_test  #This was the line printing that extra dataframe onto the Dashboard
     opp_columns = team1_test.filter(like='Opp').columns
     
     team1_test[opp_columns] = 0
@@ -247,8 +247,89 @@ if button1:
     col2.image(teams_dict['Tennessee Titans']['Logo'])
 
     col2.write("NFC Bye team: ")
-    col2.image(teams_dict['Green Bay Packers']['Logo'])   
+    col2.image(teams_dict['Green Bay Packers']['Logo'])
+    
+    # Original Code for round 2 added to the first prediction button
+    
+    afc_lowest = ''
+    afc_team1 = ''
+    afc_team2 = ''
 
+    if (teams_dict[afc_winner1]['Seed'] > teams_dict[afc_winner2]['Seed']) and (teams_dict[afc_winner1]['Seed'] > teams_dict[afc_winner3]['Seed']):
+        afc_lowest = afc_winner1
+        afc_team1 = afc_winner2
+        afc_team2 = afc_winner3
+    elif (teams_dict[afc_winner2]['Seed'] > teams_dict[afc_winner1]['Seed']) and (teams_dict[afc_winner2]['Seed'] > teams_dict[afc_winner3]['Seed']):
+        afc_lowest = afc_winner2
+        afc_team1 = afc_winner1
+        afc_team2 = afc_winner3
+    elif (teams_dict[afc_winner3]['Seed'] > teams_dict[afc_winner1]['Seed']) and (teams_dict[afc_winner3]['Seed'] > teams_dict[afc_winner2]['Seed']):
+        afc_lowest = afc_winner3
+        afc_team1 = afc_winner1
+        afc_team2 = afc_winner2
+    
+    
+    nfc_lowest = ''
+    nfc_team1 = ''
+    nfc_team2 = ''
+
+    if (teams_dict[nfc_winner1]['Seed'] > teams_dict[nfc_winner2]['Seed']) and (teams_dict[nfc_winner1]['Seed'] > teams_dict[nfc_winner3]['Seed']):
+        nfc_lowest = nfc_winner1
+        nfc_team1 = nfc_winner2
+        nfc_team2 = nfc_winner3
+    elif (teams_dict[nfc_winner2]['Seed'] > teams_dict[nfc_winner1]['Seed']) and (teams_dict[nfc_winner2]['Seed'] > teams_dict[nfc_winner3]['Seed']):
+        nfc_lowest = nfc_winner2
+        nfc_team1 = nfc_winner1
+        nfc_team2 = nfc_winner3
+    elif (teams_dict[nfc_winner3]['Seed'] > teams_dict[nfc_winner1]['Seed']) and (teams_dict[nfc_winner3]['Seed'] > teams_dict[nfc_winner2]['Seed']):
+        nfc_lowest = nfc_winner3
+        nfc_team1 = nfc_winner1
+        nfc_team2 = nfc_winner2
+
+    
+    st.header("Divisional round")
+    col1, col2 = st.columns(2)
+    col1.subheader("Teams")
+    col1.markdown("AFC Game 1")
+    col1.image(teams_dict['Tennessee Titans']['Logo'], width = 200)
+    col1.image(teams_dict[afc_lowest]['Logo'], width = 200)
+
+    col1.markdown("AFC Game 2")
+    col1.image(teams_dict[afc_team1]['Logo'], width = 200)
+    col1.image(teams_dict[afc_team2]['Logo'], width = 200)
+
+    col1.markdown("NFC Game 1")
+    col1.image(teams_dict['Green Bay Packers']['Logo'], width = 200)
+    col1.image(teams_dict[nfc_lowest]['Logo'], width = 200)
+
+    col1.markdown("NFC Game 2")
+    col1.image(teams_dict[nfc_team1]['Logo'], width = 200)
+    col1.image(teams_dict[nfc_team2]['Logo'], width = 200)
+
+    #button2 = st.button("Run Prediction 2")
+    #if button2:
+    st.write("prediction are being calculated...")
+    scores7, winner7 = Score_Predictor('Tennesse Titans', 'New England Patriots')
+    scores8, winner8 = Score_Predictor(afc_team1, afc_team2)
+    scores9, winner9 = Score_Predictor('Green Bay Packers', nfc_lowest)
+    scores10, winner10 = Score_Predictor(nfc_team1, nfc_team2)
+   
+
+    col2.subheader("Predictions")
+    col2.write("AFC Game 1 Winner:")
+    col2.subheader(f"this is the winner of game 1:{winner7}")
+
+    col2.write("AFC Game 2 Winner:")
+    col2.subheader(f"this is the winner of game 2:{winner8}")
+
+    col2.write("NFC Game 1 Winner:")
+    col2.subheader(f"this is the winner of game 1:{winner9}")
+
+    col2.write("NFC Game 2 Winner:")
+    col2.subheader(f"this is the winner of game 2:{winner10}")
+
+#Old Code Below in original position  
+    
 afc_lowest = ''
 afc_team1 = ''
 afc_team2 = ''
