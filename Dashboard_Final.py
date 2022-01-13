@@ -175,8 +175,8 @@ Arizona_Cardinals = Image.open("Logos/Cardinals.png")
 # image = Image.open('Packerslogo.png')
 # st.image(image, caption='Sunrise by the mountains')
 
-st.header("Superbowl Playoffs")
-st.header("First round matchups")
+st.header("The Road to Super Bowl LV")
+st.header("Wild Card Round Matchups")
 
 col1, col2 = st.columns(2)
 col1.subheader("Teams")
