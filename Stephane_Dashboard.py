@@ -349,3 +349,22 @@ if button1:
     scores13, winner13 = Score_Predictor(winner11, winner12)
           
     col2.image(teams_dict[winner13]['Logo'], width = 600, caption = f'Final Score: {scores13[0]: .0f} vs. {scores13[1]: .0f}')
+
+st.sidebar.header('Create Your Own Game!')   
+selected_team1 = st.sidebar.selectbox("Home Teams", sorted_unique_team)
+selected_team2 = st.sidebar.selectbox("Away Teams", sorted_unique_team, index=1)
+
+st.markdown('---')
+st.markdown('---')
+col1, col2 = st.columns(2)
+col1.subheader("Single Game Matchup")
+col1.image(teams_dict[selected_team1]['Logo'], width = 200)
+col1.text("  ")
+col1.image(teams_dict[selected_team2]['Logo'], width = 200)
+
+button1 = st.sidebar.button("Show me the result using Praedico")
+if button1:  
+    scores, winner = Score_Predictor(selected_team1, selected_team2)
+    
+    col2.subheader("Single Match Playoff")
+    col2.image(teams_dict[winner]['Logo'], width = 400, caption = f'Final Score: {scores[0]: .0f} vs. {scores[1]: .0f}')
