@@ -9,15 +9,15 @@ import pickle
 import sklearn
 import os
 
-from sklearn.model_selection import train_test_split
-from sklearn.neural_network import MLPRegressor
-from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
+#from sklearn.model_selection import train_test_split
+#from sklearn.neural_network import MLPRegressor
+#from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 
 st.set_page_config(page_title='NFL Football Stats and Predictor', layout='wide')
 st.image('./Logos/SBanner.jpeg')
 st.title('NFL Football Stats and Predictor')
 
-model = pickle.load(open('MLP_model.sav','rb'))
+model = pickle.load(open('RF_model.sav','rb'))
 path = ("./resources/Team_df.csv")
 com_data = pd.read_csv(path)
 
