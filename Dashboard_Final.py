@@ -153,8 +153,7 @@ def load_data(team): #year,
 teamstats = load_data(selected_team) #selected_year, 
 
 
-st.header('Display 2021 Season Schedule, Results, and Statistics')
-st.subheader('Team Selection: ')
+
 st.image(teams_dict[selected_team]['Logo'], width = 500)
 st.dataframe(teamstats)
 st.write("Source: https://www.pro-football-reference.com/teams/" + f"{teams_dict[selected_team]['Abbrev'].lower()}" + "/2021.htm")
@@ -365,8 +364,7 @@ if button1:
           #  button4 = st.button("Run Prediction 4")
             #if button4:
     #st.write("prediction are being calculated...")
-    col2.title("Super Bowl Winner")
-    scores13, winner13 = Score_Predictor(winner11, winner12)
+
                 
                 
     col2.image(teams_dict[winner13]['Logo'], width = 600, caption = f'Final Score: {scores13[0]: .0f} vs. {scores13[1]: .0f}')
