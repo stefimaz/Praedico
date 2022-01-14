@@ -20,6 +20,7 @@ models = {'Logistic Regression': {'load' : pickle.load(open('LR_model.sav','rb')
          }
 sorted_models = ['Logistic Regression', 'Gradien Boosting', 'MLP Regression', 'Random Forest']
 
+
 path = ("./resources/Team_df.csv")
 com_data = pd.read_csv(path)
 
@@ -227,7 +228,8 @@ nfc_team2 = ''
 
 winner = ""
 
-if button1:  
+if button1:
+    
     scores1, afc_winner1 = Score_Predictor('Kansas City Chiefs', 'Pittsburgh Steelers')
     scores2, afc_winner2 = Score_Predictor('Buffalo Bills', 'New England Patriots')
     scores3, afc_winner3 = Score_Predictor('Cincinnati Bengals', 'Las Vegas Raiders')
@@ -368,3 +370,4 @@ if button1:
     
     col2.subheader("Single Match Playoff")
     col2.image(teams_dict[winner]['Logo'], width = 400, caption = f'Final Score: {scores[0]: .0f} vs. {scores[1]: .0f}')
+    
