@@ -19,13 +19,13 @@ Columbia FinTech Bootcamp Assignment - Project 2
 * [Data](#data)
 * [Usage](#usage)
 * [Visualization](#visualization)
-* [License](#license)
+* [License](#license)  
 
 ---
 
 ## Executive Summary
 
-Praedico is an online application that allows our users to fair a better chance of predicting the winner in the NFL game of football. Without a doubt the value of the NFL betting market is challenging to accurately estimate. The value of the sports betting market is anywhere between 700 Billion to 1 Trillion with an illegal market estimated at 500 Billion. If your goal is to make money, we can help you achieve that goal with a higher probabilty.
+Praedico is an online application that allows our users to fair a better chance of predicting the winner in the NFL game of football. Without a doubt the value of the NFL betting market is challenging to accurately estimate. Over $20 billion is expected to be legally wagered in the U.S. on the 2021 NFL and college football seasons, nearly tripling the $7.5 billion wagered in 2020, according to estimates from PlayUSA. sports betting market is anywhere between 700 Billion to 1 Trillion with an illegal market estimated at 500 Billion. If your goal is to make money, we can help you achieve that goal with a higher probabilty.
 
 In our application, we have broken down the code into three steps. 
 Step 1: Gathering, cconcatenating and cleaning the data using offensive and defensive categories throughout multiple years.
