@@ -1,4 +1,6 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=gradient&width=1000&height=200&section=header&text=Praedico&fontSize=30&fontColor=black)
+
+![header](https://capsule-render.vercel.app/api?type=waving&color=gradient&width=1000&height=200&section=header&text=PRAEDICO&fontSize=30&fontColor=black)
+
 
 <!-- header is made with: https://github.com/kyechan99/capsule-render -->
 
@@ -7,8 +9,7 @@
 [Stephane Maysn](https://www.linkedin.com/in/stephane-masyn-35b16817a/) [<img src="https://cdn2.auth0.com/docs/media/connections/linkedin.png" alt="LinkedIn -  Staphane Masyn" width=15/>](https://www.linkedin.com/in/stephane-masyn-35b16817a/)
 [John Sung](https://linkedin.com/in/john-sung-3675569) [<img src="https://cdn2.auth0.com/docs/media/connections/linkedin.png" alt="LinkedIn -  John Sung" width=15/>](https://linkedin.com/in/john-sung-3675569/)
                                                              
-<br>
-Columbia FinTech Bootcamp Assignment - Project 2
+![super bowl lvi](images/super_bowl_lvi.PNG)
 
 ---
 
@@ -19,20 +20,20 @@ Columbia FinTech Bootcamp Assignment - Project 2
 * [Data](#data)
 * [Usage](#usage)
 * [Visualization](#visualization)
+* [Experience](#experience)
+* [Web Sources](#web-sources)
 * [License](#license)  
 
 ---
 
 ## Executive Summary
 
-Praedico is an online application that allows our users to fair a better chance of predicting the winner in the NFL game of football. Without a doubt the value of the NFL betting market is challenging to accurately estimate. Over $20 billion is expected to be legally wagered in the U.S. on the 2021 NFL and college football seasons, nearly tripling the $7.5 billion wagered in 2020, according to estimates from PlayUSA. sports betting market is anywhere between 700 Billion to 1 Trillion with an illegal market estimated at 500 Billion. If your goal is to make money, we can help you achieve that goal with a higher probabilty.
+Praedico is an online application that allows our users to fair a better chance of predicting the winner in the NFL game of football. Without a doubt the value of the NFL betting market is challenging to accurately estimate. However, a total of over 20 Billion US Dollars was expected to be legally wagered in the U.S. on the 2021 NFL and college football seasons, nearly tripling the 7.5 Billion US Dollars wagered in 2020. Coming into 2022, the fourth-largest US state in New York, joined the list of sports betting states on January 8, 2022. Sports betting is legal in 30 states now while 10 additional states are planning to legalize soon. 
 
-In our application, we have broken down the code into three steps. 
-Step 1: Gathering, cconcatenating and cleaning the data using offensive and defensive categories throughout multiple years.
-Step 2: Training and testing the data using logistic regression, adaboost...
-Step 3: Combining the machine leaning to forecast the ultimate winner of the Suberbowl
+Now that we explained why developed of our application, let's go into the methodology behind the building of the app. In our application, we used the CRISP-DM Methodology to help our team stay organized to come up with a solution that predicts the winner of the Super Bowl LVI. By reviewing the code, you will come to know where and how we came up with our secret sauce called the Praedico. 
 
-Thank you for using our application. We look forward to winning with you. May the Praedico be with you!
+In our MVP, we have created a user friendly dashboard using Steamlit to help users view stats, summary and overall predicitons using interchangeable machine learning models. As we continue to work on our application, we will look to include the ability to place a wager and add additional features like betting odds and weather components to enhance our user experience. 
+Please enjoy and may the Praedico be with you!
 
 ---
 
@@ -47,28 +48,21 @@ The following library was used:
 
 1. [Scikit Learn](https://scikit-learn.org/stable/index.html) - Scikit Learn or Sklearn is one of the most used Python libraries for Data Science, along with others like Numpy, Pandas, Tensorflow, or Keras.
 
+2. [Streamlit](https://streamlit.io/) - Streamlit turns data scripts into shareable web apps in minutes.
+
 
 Install the following librarie(s) in your terminal...
 
     pip install -U scikit-learn
-
-This project leverages python 3.7, Streamlit, Yahoo Finance, SciPy, ARIMA and Statsmodels .
-
-Go to your terminal or git bash and run conda activate dev to activate your conda dev environment. 
-You will then install the following librarie(s) and module(s) to run in Python codes created.
-    pip install streamlit
+    pip install streamliy
  
-
-To ensure installation was complete, run the following...
-    conda list streamlit
-
-
 ---
 
 ## Data
 
-The CSV files used in our codes were mainly created 
-Porfootbalreference.com
+The CSV files used in our codes were mainly created from profootballreference.com
+
+![csv_file_list](images/csv_file_list.PNG)
 
 ---
 
@@ -78,13 +72,52 @@ Go to the Anaconda Prompt to launch JupyterLab by typing Jupyter Lab. To use thi
 
 ---
 
+## Visualization
 
 
-## Evaluation Report
+# Using offensive and deffensive categories to create training Set
+![training set](images/create_training_set.PNG)
 
+# Evaluating the samples of Mean Abolute Error of three models shown  
+![mean absolute error](images/mean_absolute_error.PNG)
+
+# Dataframe Creation
+![data frame](images/data_frame_creation.PNG)
+
+# Showing the scores being predicted 
+![score_predictor](images/back_end_of_score_predictor.PNG)
+
+---
+
+## Experience
+
+Please experience Praedico for yourself. Choose between the following... 
+
+1) CLICK https://share.streamlit.io/stefimaz/side_projects/NFL_Dashboard.py 
+
+2) SCAN the QR Reader using the camera from your phone. 
+
+![QR_Reader](images/qr_reader.PNG)
 
 
 ---
+
+## Web Sources
+
+https://pro-football-reference.com
+
+https://sportingnews.com
+
+https://bloomberg.com
+
+https://nfl.com
+
+https://youtu.be/8emUyzczThY
+
+https://www.youtube.com/watch?v=9DtrosZ3bsI&t=412s
+
+---
+
 
 ## License
 
