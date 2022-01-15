@@ -72,7 +72,7 @@ The CSV files used in our codes were mainly created from https://pro-football-re
 ![training set](images/create_training_set.PNG)
 
 ### Evaluating the samples of Mean Abolute Error of three models shown  
-![mean absolute error](images/mean_absolute_error.PNG)
+![mean absolute error](images/model_mean_absolute_error.PNG)
 
 ### Dataframe Creation
 ![data frame](images/data_frame_creation.PNG)
