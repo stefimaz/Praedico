@@ -68,17 +68,31 @@ The CSV files used in our codes were mainly created from https://pro-football-re
 ## Visualization
 
 
-# Using offensive and deffensive categories to create training Set
+### Using offensive and deffensive categories to create training Set
 ![training set](images/create_training_set.PNG)
 
-# Evaluating the samples of Mean Abolute Error of three models shown  
+### Evaluating the samples of Mean Abolute Error of three models shown  
 ![mean absolute error](images/mean_absolute_error.PNG)
 
-# Dataframe Creation
+### Dataframe Creation
 ![data frame](images/data_frame_creation.PNG)
 
-# Showing the scores being predicted 
+### Showing the scores being predicted 
 ![score_predictor](images/back_end_score_predictor.PNG)
+
+## Front end application images
+
+### Select the team for analysis
+![Choose Team](images/choose_team_annalysis.PNG)
+
+### Choose the model
+![Choose Model](images/choose_model.PNG)
+
+### Run the model for projection
+![Run Praedico](images/run_praedico.PNG)
+
+### The WINNER is... 
+![Winner Praedico](images/winner_prediction.PNG)
 
 ---
 
