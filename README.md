@@ -52,7 +52,11 @@ Install the following librarie(s) in your terminal...
 
     pip install -U scikit-learn
 
+<<<<<<< Updated upstream
 This project leverages python 3.7, Streamlit, Yahoo Finance, SciPy, ARIMA and Statsmodels .
+=======
+The CSV files used in our codes were mainly created from https://pro-football-reference.com
+>>>>>>> Stashed changes
 
 Go to your terminal or git bash and run conda activate dev to activate your conda dev environment. 
 You will then install the following librarie(s) and module(s) to run in Python codes created.
