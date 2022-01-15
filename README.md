@@ -29,10 +29,9 @@
 
 Praedico is an online application that allows our users to fair a better chance of predicting the winner in the NFL game of football. Without a doubt the value of the NFL betting market is challenging to accurately estimate. However, a total of over 20 Billion US Dollars was expected to be legally wagered in the U.S. on the 2021 NFL and college football seasons, nearly tripling the 7.5 Billion US Dollars wagered in 2020. Coming into 2022, the fourth-largest US state in New York, joined the list of sports betting states on January 8, 2022. Sports betting is legal in 30 states now while 10 additional states are planning to legalize soon. 
 
-Now that we explained why developed of our application, let's go into the methodology behind the building of the app. In our application, we used the CRISP-DM Methodology to help our team stay organized to come up with a solution that predicts the winner of the Super Bowl LVI. By reviewing the code, you will come to know where and how we came up with our secret sauce called the Praedico. 
+Now that we explained why we developed of our application, let's go into the methodology behind the building of the app. In our application, we used the CRISP-DM Methodology to help our team stay organized to come up with a solution that predicts the winner of the Super Bowl LVI. By reviewing the code, you will come to know where and how we came up with our secret sauce called the Praedico. 
 
-In our MVP, we have created a user friendly dashboard using Steamlit to help users view stats, summary and overall predicitons using interchangeable machine learning models. As we continue to work on our application, we will look to include the ability to place a wager and add additional features like betting odds and weather components to enhance our user experience. 
-Please enjoy and may the Praedico be with you!
+In our MVP, we have created a user friendly dashboard using Steamlit to help users view stats, summary and overall predicitons using interchangeable machine learning models. As we continue to work on our application, we will look to include other sports, the ability to place a wager and add additional features like betting odds and weather components to enhance our user experience. Please enjoy and may the Praedico be with you!
 
 ---
 
