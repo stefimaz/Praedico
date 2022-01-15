@@ -89,7 +89,7 @@ The CSV files used in our codes were mainly created from https://pro-football-re
 ![Choose Model](images/choose_model.PNG)
 
 ### Run the model for projection
-![Run Praedico](images/run_praedico.PNG)
+![Run Praedico](images/click_run_praedico.PNG)
 
 ### The WINNER is... 
 ![Winner Praedico](images/winner_prediction.PNG)
