@@ -18,9 +18,8 @@
 * [Executive Summary](#executive-summary)
 * [Requirements](#requirements)
 * [Data](#data)
-* [Usage](#usage)
 * [Visualization](#visualization)
-* [Experience](#experience)
+* [User Experience](#user-experience)
 * [Web Sources](#web-sources)
 * [License](#license)  
 
@@ -66,12 +65,6 @@ The CSV files used in our codes were mainly created from https://pro-football-re
 
 ---
 
-## Usage
-
-Go to the Anaconda Prompt to launch JupyterLab by typing Jupyter Lab. To use this application simply clone the repository and run the NFL_Dashboard.py in your Jupyter Lab. Open a terminal and input streamlit run NFL_Dashboard.py or click QR Reader below to experience the app.
-
----
-
 ## Visualization
 
 
@@ -85,11 +78,14 @@ Go to the Anaconda Prompt to launch JupyterLab by typing Jupyter Lab. To use thi
 ![data frame](images/data_frame_creation.PNG)
 
 # Showing the scores being predicted 
-![score_predictor](images/back_end_of_score_predictor.PNG)
+![score_predictor](images/back_end_score_predictor.PNG)
 
 ---
 
-## Experience
+## User Experience
+
+Go to the Anaconda Prompt to launch JupyterLab by typing Jupyter Lab. To use this application simply clone the repository and run the NFL_Dashboard.py in your Jupyter Lab. Open a terminal and input streamlit run NFL_Dashboard.py or simply choose from the two options below.
+
 
 Please experience Praedico for yourself. Choose between the following... 
 
