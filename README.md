@@ -31,7 +31,18 @@ Praedico is an online application that allows our users to fair a better chance 
 
 Now that we explained why we developed of our application, let's go into the methodology behind the building of the app. In our application, we used the CRISP-DM Methodology to help our team stay organized to come up with a solution that predicts the winner of the Super Bowl LVI. By reviewing the code, you will come to know where and how we came up with our secret sauce called the Praedico. 
 
-In our MVP, we have created a user friendly dashboard using Steamlit to help users view stats, summary and overall predicitons using interchangeable machine learning models. As we continue to work on our application, we will look to include other sports, the ability to place a wager and add additional features like betting odds, injuries, QB status and weather components to enhance our user experience. Please enjoy and may the Praedico be with you!
+In our MVP, we have created a user friendly dashboard using Steamlit to help users view stats, summary and overall predicitons using interchangeable machine learning models. As we continue to work on our application, we will look to include other sports, the ability to...
+
+1) Place a wager and add additional features like betting odds
+
+2) Add loops to automate  most efficient model,
+
+3) Add features to include injury status, QB efficiency and weather components
+
+4) Once games are played, we will automate scores from the internet to place the incorrect teams to re-run the model
+
+...to enhance our user experience. Please enjoy and may the Praedico be with you!
+
 
 ---
 
@@ -70,8 +81,8 @@ The CSV files used in our codes were mainly created from https://pro-football-re
 ### Using offensive and deffensive categories to create training Set
 ![training set](images/create_training_set.PNG)
 
-### Evaluating the samples of Mean Abolute Error of three models shown  
-![mean absolute error](images/model_mean_absolute_error.PNG)
+### Evaluating the samples of Mean Abolute Error of four models shown and using the best mean absolute error 
+![super model](images/super_model.PNG)
 
 ### Dataframe Creation
 ![data frame](images/data_frame_creation.PNG)
